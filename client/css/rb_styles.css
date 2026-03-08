@@ -14,12 +14,6 @@ html {
 
 /* Header styles */
 
-header img#logoimg {
-	height: 300px;
-   width: 100%;
-
-}
-
 header {
    background-color: #0000CD;
    border-bottom: #0000CD;
@@ -67,7 +61,6 @@ section p {
    line-height: 1.4em;
    margin: 15px 0px;
 }
-
 
 
 /* Footer styles */   

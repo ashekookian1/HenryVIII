@@ -2,14 +2,14 @@
 
 /* Basic styles to be used with all devices and under all conditions */
 
-article, aside, figcaption, figure,
+article, aside, figcaption, 
 footer, header, main, nav, section { 
    display: block;
 }
 
 address, article, aside, blockquote, body, cite, 
-div, dl, dt, dd, em, figcaption, figure, footer, 
-h1, h2, h3, h4, h5, h6, header, html, img, 
+div, dl, dt, dd, em, figcaption,  footer, 
+h1, h2, h3, h4, h5, h6, header, html, 
 li, main, nav, nav a, ol, p, section, span, ul,
 table, tr, td, th, col, colgroup {
    margin: 0;
