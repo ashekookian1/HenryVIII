@@ -3,19 +3,19 @@ const path = require("path");
 //function to hold all our page listeners
 var router = function(app) {
     app.get("/", function(req, res) { // unnamed function is in between the {}s
-        res.sendFile(path.join(__dirname + "/../client/html/Henry 8 - Home Page.html"))  //telling it the path to where the code is sitting
+        res.sendFile(path.join(__dirname + "/../client/html/homepage.html"))  //telling it the path to where the code is sitting
     });
 
-    app.get("/write-data", function(req, res) { // unnamed function is in between the {}s
-        res.sendFile(path.join(__dirname + "/../client/write-data.html"))  //telling it the path to where the code is sitting
+    app.get("/overview", function(req, res) { // unnamed function is in between the {}s
+        res.sendFile(path.join(__dirname + "/../client/html/overviewpage.html"))  //telling it the path to where the code is sitting
     });
 
-    app.get("/view-data", function(req, res) { // unnamed function is in between the {}s
-        res.sendFile(path.join(__dirname + "/../client/view-data.html"))  //telling it the path to where the code is sitting
+    app.get("/Anne-Boleyn", function(req, res) { // unnamed function is in between the {}s
+        res.sendFile(path.join(__dirname + "/../client/html/Anne Boleyn.html"))  //telling it the path to where the code is sitting
     });
 
-    app.get("/browse-data", function(req, res) { // unnamed function is in between the {}s
-        res.sendFile(path.join(__dirname + "/../client/browse-data.html"))  //telling it the path to where the code is sitting
+    app.get("/Anne-of-Cleves", function(req, res) { // unnamed function is in between the {}s
+        res.sendFile(path.join(__dirname + "/../client/html/Anne of Cleves.html"))  //telling it the path to where the code is sitting
     });
 }
 
