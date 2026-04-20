@@ -6,7 +6,8 @@
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <title>Admin Page</title>
-   
+   	<script  src="/client/js/admin page.js" async></script>
+
    </head>
 
 <body>
@@ -14,65 +15,61 @@
 <section>
       <h1>Admin</h1>		
 <br>
-		
+	<form>	
 <div class="formRow">
-               <label for="name">Question:</label>
-			   <textarea name="custExp" id="commBox"></textarea>
+               <label for="quiz_questions">Question:</label>
+			   <textarea name="quiz_questions" id="quiz_questions"></textarea>
             </div>
 	<br>
 <br>	
 <div class="formRow">
-               <label for="name">Point Value:</label>
-			   <input name="dineOut" id="dineSpin" type="number"
+               <label for="points">Point Value:</label>
+			   <input name="points" id="points" type="number"
 						value="1" step="1" min="1" max="10" />
             </div>
 <br>
 <br>
-<div class="formRow">
-               <label for="name">Image Link:</label>
-			   <textarea name="custExp" id="commBox"></textarea>
-            </div>
-	<br>
-<br>	
+
 	Answer Options:
 <br>
 <br>
+
 <div class="formRow">            
-               <label for="street">1.</label>
-               <input name="custStreet" id="street" type="text" />
-			   <label for="hYes">Correct</label>
+               <label for="answerOne">1.</label>
+               <input name="answerOne" id="answerOne" type="text" />
+			   <label for="answerOne">Correct</label>
 					<input name="foodHot" id="correct" value="correct" type="radio" />
             </div>
 
 <br>
 <div class="formRow">            
-               <label for="street">2.</label>
-               <input name="custStreet" id="street" type="text" />
-					<label for="hYes">Correct</label>
+               <label for="answerTwo">2.</label>
+               <input name="custStreet" id="answerTwo" type="text" />
+					<label for="answerTwo">Correct</label>
 					<input name="foodHot" id="correct" value="correct" type="radio" />
             </div>
 <br>
 
 <div class="formRow">            
-               <label for="street">3.</label>
-               <input name="custStreet" id="street" type="text" />
-					<label for="hYes">Correct</label>
+               <label for="answerThree">3.</label>
+               <input name="custStreet" id="answerThree" type="text" />
+					<label for="answerThree">Correct</label>
 					<input name="foodHot" id="correct" value="correct" type="radio" />
             </div>
 <br>
 
 <div class="formRow">            
-               <label for="street">4.</label>
-               <input name="custStreet" id="street" type="text" />
-					<label for="hYes">Correct</label>
+               <label for="answerFour">4.</label>
+               <input name="custStreet" id="answerFour" type="text" />
+					<label for="answerFour">Correct</label>
 					<input name="foodHot" id="correct" value="correct" type="radio" />
             </div>
 <br>
 <div class="buttons">
-				<input type="submit" value="Save" />
-				<input type="reset" value="Clear" />
+				<button id="submit" > Save </button>
+				<button id="Clear" > Clear </button>
 			</div>
-
+</form>
 	
 		<style>
 	

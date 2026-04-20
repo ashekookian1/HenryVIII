@@ -23,8 +23,8 @@ var router = require("./router.js") // saying the router sits in the current fol
 router(app);
 
 //Service listeners (our data processes)
-// var services = require("./services.js");
-// services(app); 
+ var services = require("./services.js");
+ services(app); 
 
 // Listen
 var server = app.listen(port, function(err) { // this is the app function that uses the port 5000 above - if the function has an error - it'll give you an error code
