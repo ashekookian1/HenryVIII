@@ -4,7 +4,8 @@ let mysql = require('mysql2');
 let con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "vampire1"
+  password: "vampire1",
+  database: "henry_viii"
 });
 
 con.connect(function(err) {
@@ -15,8 +16,6 @@ con.connect(function(err) {
 var services = function(app) {
     // all db listeners are in here
     app.post("/write-question", async function(req, res) { // the listener called write question
-    
-        console.log("This is an error message for the server side.")
 
         var questionData = { //has ? and pts. only - so 2 values
             question: req.body.question,
@@ -26,8 +25,10 @@ var services = function(app) {
 
         console.log(JSON.stringify(questionData))
         
-        con.query("INSERT INTO Quiz_Questions (question, points) VALUES ?", questionData, function (err, result) {
+        
+        con.query("INSERT INTO quiz_questions SET ?",  questionData, function (err, result) { 
             if (err) throw err;
+            console.log(result.insertId)
             return res.json({msg: "SUCCESS", questionID: result.insertId}); // gets spells array back and it populates the table 
        
         });
