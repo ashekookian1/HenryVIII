@@ -34,6 +34,30 @@ var services = function(app) {
         });
 
     }); 
+
+    // var services = function(app) {
+    // // all db listeners are in here
+    // app.post("/write-answer", async function(req, res) { // the listener called write question
+
+    //     var answerData = { //has ? and pts. only - so 2 values
+    //         answer_id: req.body.answer_id,
+    //         answer: req.body.answer,
+    //         question_id:req.body.question_id,
+    //         correct_ans:correct_ans
+    //     };
+
+
+    //     console.log(JSON.stringify(questionData))
+        
+        
+    //     con.query("INSERT INTO quiz_questions SET ?",  questionData, function (err, result) { 
+    //         if (err) throw err;
+    //         console.log(result.insertId)
+    //         return res.json({msg: "SUCCESS", questionID: result.insertId}); // gets spells array back and it populates the table 
+       
+    //     });
+
+    // }); 
     
 
     app.get("/get-records", async function(req, res) {
@@ -59,4 +83,4 @@ var services = function(app) {
 
 }
 
-module.exports = services;
+module.exports = services; 
