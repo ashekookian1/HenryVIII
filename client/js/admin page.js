@@ -35,6 +35,12 @@ event.preventDefault();
 
   console.log(jsonObject)
 
+ var jsonObject = {
+     question_id: qID,
+       answer: answer_text_array.html,
+       correct_ans: true_false_array.html,
+    };
+
     //Send data through a fetch
   fetch("http://localhost:5000/write-question", { // has to match the listener called write question on the services.js page
         method: "POST",
@@ -86,7 +92,35 @@ function saveAnswers(qID) {
 
     console.log("answerFour: ", answerFour);
     console.log("answer four correct: ", choiceFour);
-   
+
+   fetch("http://localhost:5000/write-answers", { // has to match the listener called write question on the services.js page
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonObject)
+    })
+    .then(response => {  // sending the response to an unnamed function
+        
+        if(!response.ok){ // if response is not ok, then throw the below error message
+            throw new Error("Server returned an error!: " + response.statusText);
+        }
+
+        return response.json();
+    })
+
+    .then(data => {
+        alert("Result: " + data.msg);
+        if(data.msg === "SUCCESS") { 
+            console.log("Question ID: ", data.answerID)
+           saveAnswers(data.answerID);
+        }
+    })
+    .catch(error => {
+        alert("Unable to connect to server!:  " + error);  
+    });       
+
+
 }
 
 const clearButton = document.getElementById("Clear");
