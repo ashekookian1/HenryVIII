@@ -35,29 +35,32 @@ var services = function(app) {
 
     }); 
 
-    // var services = function(app) {
-    // // all db listeners are in here
-    // app.post("/write-answer", async function(req, res) { // the listener called write question
+    
+    app.post("/write-answers", async function(req, res) { // the listener called write question
 
-    //     var answerData = { //has ? and pts. only - so 2 values
-    //         answer_id: req.body.answer_id,
-    //         answer: req.body.answer,
-    //         question_id:req.body.question_id,
-    //         correct_ans:correct_ans
-    //     };
+        var question_id = req.body.question_id;
+        var answer_text = req.body.textAnswers;
+        var correct_answers = req.body.correct_ans;
+
+       var insertData = [];
+
+        for (let i = 0; i < answer_text.length; i++) {
+            let tempArray = [question_id, answer_text[i], correct_answers[i]];
+            insertData.push(tempArray);
+        }
 
 
-    //     console.log(JSON.stringify(questionData))
+        console.log(JSON.stringify(insertData))
         
         
-    //     con.query("INSERT INTO quiz_questions SET ?",  questionData, function (err, result) { 
-    //         if (err) throw err;
-    //         console.log(result.insertId)
-    //         return res.json({msg: "SUCCESS", questionID: result.insertId}); // gets spells array back and it populates the table 
+        con.query("INSERT INTO answer_table (question_id, answer, correct_ans) VALUES ?",  [insertData], function (err, result) { 
+            if (err) throw err;
+            console.log(result.insertId)
+            return res.json({msg: "SUCCESS"}); // gets spells array back and it populates the table 
        
-    //     });
+        });
 
-    // }); 
+    }); 
     
 
     app.get("/get-records", async function(req, res) {
