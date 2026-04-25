@@ -27,7 +27,8 @@ var services = function(app) {
         
         
         con.query("INSERT INTO quiz_questions SET ?",  questionData, function (err, result) { 
-            if (err) throw err;
+            if (err) return res.json({msg: "Error: " + err});
+
             console.log(result.insertId)
             return res.json({msg: "SUCCESS", questionID: result.insertId}); // gets spells array back and it populates the table 
        
@@ -54,7 +55,8 @@ var services = function(app) {
         
         
         con.query("INSERT INTO answer_table (question_id, answer, correct_ans) VALUES ?",  [insertData], function (err, result) { 
-            if (err) throw err;
+            if (err) return res.json({msg: "Error: " + err});
+
             console.log(result.insertId)
             return res.json({msg: "SUCCESS"}); // gets spells array back and it populates the table 
        
@@ -63,26 +65,28 @@ var services = function(app) {
     }); 
     
 
-    app.get("/get-records", async function(req, res) {
-        
-        const orderBy = {bookTitle: 1};        // order it by name - in the name field
-
-        //2.  Connect, find data, close database, return results or error
-        try {
-            const conn = await client.connect(); // connect to the Mongo server
-            const db = conn.db("library"); // connect to the Mongo db desired
-            const coll = db.collection("bookTable"); // connect to the collection in the db desired
-
-            const books = await coll.find().sort(orderBy).toArray();
-
-            await conn.close();
-
-            return res.json({msg: "SUCCESS", libraryData: books}); // gets spells array back and it populates the table 
-        } catch(err) {
-            return res.json({msg: "Error: " + err});
-        }
-
+    app.get("/get-questions", async function(req, res) {
+            
+       
+        con.query("SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 5", function (err, result) {
+            if (err) return res.json({msg: "Error: " + err});
+            console.log("random questions: ",result);
+            return res.json({msg: "SUCCESS", questionData: result});  
+        });
     });
+
+
+
+app.get("/get-answers", async function(req, res) {
+            
+       
+        con.query("SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 5", function (err, result) { // change select statemnt
+             if (err) return res.json({msg: "Error: " + err});
+             console.log("random questions: ",result);
+             return res.json({msg: "SUCCESS", questionData: result});  
+        });
+
+     });
 
 }
 

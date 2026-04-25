@@ -74,6 +74,7 @@ if(points < 1 || points > 10 )
 
 
 });
+
 function saveAnswers(qID) {
     var answerOne = document.getElementById("answerOne").value;
     var answerTwo = document.getElementById("answerTwo").value;
@@ -134,7 +135,7 @@ function saveAnswers(qID) {
     });       
 
 
-}
+} //end of save answers function
 
 const clearButton = document.getElementById("Clear");
 clearButton.addEventListener("click", function(event) {
@@ -145,7 +146,7 @@ clearButton.addEventListener("click", function(event) {
 
    clearFormAfterSavingData();
 
-});
+}); // end of listener for clear button
 
 function clearFormAfterSavingData(){
 document.getElementById("quiz_questions").value = "";

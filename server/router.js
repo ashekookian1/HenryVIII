@@ -76,6 +76,10 @@ var router = function(app) {
     app.get("/Admin", function(req, res) { // unnamed function is in between the {}s
         res.sendFile(path.join(__dirname + "/../client/html/Admin Page.html"))  //telling it the path to where the code is sitting
     });
+
+     app.get("/quiz-questions-page", function(req, res) { // unnamed function is in between the {}s
+        res.sendFile(path.join(__dirname + "/../client/html/quiz-questions-page.html"))  //telling it the path to where the code is sitting
+    });
 }
 
 module.exports = router;
