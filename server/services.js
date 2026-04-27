@@ -58,7 +58,7 @@ var services = function(app) {
             if (err) return res.json({msg: "Error: " + err});
 
             console.log(result.insertId)
-            return res.json({msg: "SUCCESS"}); // gets spells array back and it populates the table 
+            return res.json({msg: "SUCCESS"}); // gets questions array back and it populates the table 
        
         });
 
@@ -70,7 +70,7 @@ var services = function(app) {
        
         con.query("SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 5", function (err, result) {
             if (err) return res.json({msg: "Error: " + err});
-            console.log("random questions: ",result);
+            // console.log("random questions: ",result);
             return res.json({msg: "SUCCESS", questionData: result});  
         });
     });
@@ -79,14 +79,23 @@ var services = function(app) {
 
 app.get("/get-answers", async function(req, res) {
             
-       
-        con.query("SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 5", function (err, result) { // change select statemnt
-             if (err) return res.json({msg: "Error: " + err});
-             console.log("random questions: ",result);
-             return res.json({msg: "SUCCESS", questionData: result});  
-        });
 
+       // step 1. get the ?id from the request.body
+         var question_id = req.query.questionID
+         console.log("question id: ", question_id);
+       
+       //step 2. execute the query
+        con.query("SELECT * FROM answer_table where question_id = ?", question_id, function (err, result) { // change select statement
+             if (err) return res.json({msg: "Error: " + err});
+             // console.log("answers: ",result);
+             return res.json({msg: "SUCCESS", answerData: result});  
+
+
+        });
+// capture ?ID and do a select statement for the answers table - returns all 4 answers - display them as answers in the console log
      });
+
+     
 
 }
 
