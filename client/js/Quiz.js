@@ -1,5 +1,14 @@
 var questions = [];
 
+var answers = [];
+
+var score = 0;
+
+var index = 0;
+
+var totalPoints = 0;
+
+
 getQuestions();
 function getQuestions(){
 fetch("http://localhost:5000/get-questions", { // has to match the listener called write question on the services.js page
@@ -24,7 +33,7 @@ fetch("http://localhost:5000/get-questions", { // has to match the listener call
         if(data.msg === "SUCCESS") { 
             questions = data.questionData;
            console.log("random questions: ",data.questionData)
-           getAnswers(questions[0].question_id,0)
+           getAnswers(questions[index].question_id)
         }
     })
     .catch(error => {
@@ -33,11 +42,10 @@ fetch("http://localhost:5000/get-questions", { // has to match the listener call
 
 }
 
-var answers = [];
 
 // call get answers function and send it the first ? id in the array
 
-function getAnswers(qID,index){
+function getAnswers(qID){
     var jsonObject = {
         questionID: qID
     }
@@ -61,7 +69,7 @@ function getAnswers(qID,index){
     })
 
     .then(data => {
-        alert("Result: " + data.msg);
+       // alert("Result: " + data.msg);
         if(data.msg === "SUCCESS") { 
            answers = data.answerData;
            console.log("answer options: ",data.answerData)
@@ -100,35 +108,53 @@ function paintScreen(index){
    submitButton.addEventListener("click", function(event) {
 
    event.preventDefault();
-   
-   console.log("submit button pressed");
-   alert("submit button pressed");
 
    checkAnswers();
 
 }); 
 
 function checkAnswers(){
-   // document.getElementById("quiz_questions").value = "";
-   document.getElementById("points").value = "";
-   // document.getElementById("answerOne").value = "";
-   // document.getElementById("answerTwo").value = "";
-  // document.getElementById("answerThree").value = "";
-  // document.getElementById("answerFour").value = "";
-   document.getElementById("choiceOne").checked = false;
-   document.getElementById("choiceTwo").checked = false;
-   document.getElementById("choiceThree").checked = false;
-   document.getElementById("choiceFour").checked = false;
+   
+   const selectedValue = document.querySelector('input[name="answerOption"]:checked')?.value;
+   console.log("correct: ",(answers[selectedValue].correct_ans===1) );
+   totalPoints = totalPoints + questions[index].points;
+    if (answers[selectedValue].correct_ans===1) {
+// if answer is correct 
+    score = score + questions[index].points;
+    alert("Correct!  Your score is: " + score + " out of " + totalPoints);
+// do this code - js popup correct and increase score and show it on popup - 2 lines of code
+
+// increase the points by: questions[index].points
+    } else {
+        score;
+alert("Sorry, incorrect. Your score is: " + score + " out of " + totalPoints);
+//alert("Your score is: ", score);
+// do this code - 1 line
+
+    }
+    bringNextQuestion();
 }
 
-var radioButtonChoiceArray = [choiceOne, choiceTwo, choiceThree, choiceFour];
 
-    var answerTextArray = [answerOne, answerTwo, answerThree, answerFour];
+// next button listener 
 
-    var jsonObject = {
-        question_id: qID,
-        textAnswers: answerTextArray,
-        correct_ans: radioButtonChoiceArray
-    };
+// const next_question = document.getElementById("next_question");
+//    next_question.addEventListener("click", function(event) {
 
+//     console.log("next button clicked");
+
+//    event.preventDefault();
+
+//    bringNextQuestion();
+
+// }); 
     
+
+function bringNextQuestion(question_id){
+ index = index + 1;
+ if (index > 4) {
+    alert ("Quiz Finished!")
+ } else {
+    getAnswers(questions[index].question_id)
+ }
+}
