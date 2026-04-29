@@ -16,3 +16,16 @@ figcaption {
   
   margin-top: 5px;
 }
+
+ 
+
+.option {
+    display: flex;
+    align-items: flex; /* Vertically centers radio with text */
+    justify-content: flex-start; /* Keeps them left-aligned relative to each other */
+    width: 200px; /* Optional: Sets a width for consistent left-alignment */
+    margin: 5px 0;
+	padding-left: 180px;
+	width: fit-content;
+	
+  }

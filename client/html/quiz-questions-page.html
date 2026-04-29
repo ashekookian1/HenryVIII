@@ -49,55 +49,61 @@
       <h1><center>Quiz</center></h1>		
 	
 <br>
+
+<div class="quiz-container">
 	<form>	
 <div class="formRow">
-               <label for="quiz_questions"><center><b>  Question:</center></b></label>
+               <label for="quiz_questions"><center><b> Question:</center></b></label>
 			   
 			   <div name="quiz_questions" id="question_id"><center>testing - ? goes here</center></div>
             </div>
-	<br>
+	<br> 
 <br>	
 
 	
 
-<div class="formRow">            
+<div class="option">            
               
-					<center><input name="answerOption" id="choiceOne" type="radio" value=0 /></center>
-               <div name="answerOption" id="answer0" type="text"><center> answer 1</center> </div>
-            
+					<input name="answerOption" id="choiceOne" type="radio" value=0 />
+              <center> <div name="answerOption" id="answer0" type="text"> answer 1</center> </div>
+
 
 <br>
-<div class="formRow">            
-               <center><input name="answerOption" id="choiceTwo" type="radio" value=1 /></center>
-               <div name="answerOption" id="answer1" type="text"><center> answer 2 </center> </div>	
+<div class="option">            
+               <input name="answerOption" id="choiceTwo" type="radio" value=1 />
+               <center><div name="answerOption" id="answer1" type="text"> answer 2 </center> </div>	
            
 <br>
 
-<div class="formRow">            
-               <center><input name="answerOption" id="choiceThree" type="radio" value=3 /></center>
-               <div name="answerOption" id="answer2" type="text"> <Center> answer 3 </center> </div>	
+<div class="option">            
+               <input name="answerOption" id="choiceThree" type="radio" value=3 />
+               <Center><div name="answerOption" id="answer2" type="text">answer 3 </center> </div>	
            
 <br>
 
-<div class="formRow">            
-               <Center><input name="answerOption" id="choiceFour" type="radio" value=4 /></center>
-               <div name="answerOption" id="answer3" type="text"> <center> answer 4 </center> </div>	
-            
+<div class="option">            
+               <input name="answerOption" id="choiceFour" type="radio" value=4 />
+               <center><div name="answerOption" id="answer3" type="text"><label>answer 4</label> </center> </div>	
+         </div>   
 <br><br>
 <div class="buttons">
 				<Center><button id="submit" > Submit Answer </button>
-				<button id="next_question" > Next Question </button></center>
-			</div>
+				<button id="next_question" > Next Question </button></center></div>
+			
+
 
 </form>
+
 <br>
 
 <br>
 <br>
 	<br> 
 	
-		<style>
-	
+		
+
+
+	<style>
     /* (B) RESIZE METHOD */
     .fill { object-fit: fill; }
     .contain { object-fit: contain; }

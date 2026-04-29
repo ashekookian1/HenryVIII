@@ -92,5 +92,43 @@ function paintScreen(index){
     answerElement.innerHTML = "<center>" + answers[3].answer + "</center>";
 }
 
+
+
+// submit button listener
+
+   const submitButton = document.getElementById("submit");
+   submitButton.addEventListener("click", function(event) {
+
+   event.preventDefault();
    
+   console.log("submit button pressed");
+   alert("submit button pressed");
+
+   checkAnswers();
+
+}); 
+
+function checkAnswers(){
+   // document.getElementById("quiz_questions").value = "";
+   document.getElementById("points").value = "";
+   // document.getElementById("answerOne").value = "";
+   // document.getElementById("answerTwo").value = "";
+  // document.getElementById("answerThree").value = "";
+  // document.getElementById("answerFour").value = "";
+   document.getElementById("choiceOne").checked = false;
+   document.getElementById("choiceTwo").checked = false;
+   document.getElementById("choiceThree").checked = false;
+   document.getElementById("choiceFour").checked = false;
+}
+
+var radioButtonChoiceArray = [choiceOne, choiceTwo, choiceThree, choiceFour];
+
+    var answerTextArray = [answerOne, answerTwo, answerThree, answerFour];
+
+    var jsonObject = {
+        question_id: qID,
+        textAnswers: answerTextArray,
+        correct_ans: radioButtonChoiceArray
+    };
+
     
