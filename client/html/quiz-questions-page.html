@@ -10,6 +10,7 @@
 	<link href="/client/css/rb_reset.css" rel="stylesheet" />
    <link href="/client/css/rb_styles.css" rel="stylesheet" />
    <link href="/client/css/quiz_questions_style_sheet.css" rel="stylesheet" />
+   <link href="/client/css/quiz_questions_modal_style_sheet.css" rel="stylesheet" />
   
    </head>
 
@@ -30,8 +31,29 @@
       </nav>
 	  
    </header>
-   
-   <section>
+
+   <!-- The Modal -->
+<div id="quizModal" class="modal-overlay modal-hidden">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+    <div id="modal-icon"></div>
+    <h2 id="modal-title"></h2>
+    <p id="modal-score"></p>
+    <button onclick="nextQuestionAction()" class="next-btn">Next Question</button>
+  </div>
+</div>
+
+<div id="endOfQuizModal" class="modal-overlay modal-hidden">
+    <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+     <h2 id="quizEndModalTitle"></h2>
+    <p id="modal-score"></p>
+<button onclick="quizRestartButton()" class="quiz-restart-btn">Restart Quiz</button>
+<button onclick="backToHomePageButton()" class="back-to-homepage-btn">Back to Homepage</button>
+  </div>
+</div>
+
+   <section id="quiz-section">
    
    <br>
    
@@ -46,6 +68,8 @@
 <figcaption>Henry in 1531</figcaption>
   </figure>
    
+
+
       <h1><center>Quiz</center></h1>		
 	
 <br>
@@ -53,7 +77,7 @@
 <div class="quiz-container">
 	<form>	
 <div class="formRow">
-               <label for="quiz_questions"><center><b> Question:</center></b></label>
+               <label for="quiz_questions" id="questionHeader"><center><b> Question:</center></b></label>
 			   
 			   <div name="quiz_questions" id="question_id"><center>testing - ? goes here</center></div>
             </div>
@@ -92,6 +116,9 @@
 			</div> 
 
 
+
+
+
 </form>
 
 <br>
@@ -117,6 +144,7 @@
 }  
 
     </style>
+
 	
 	
 </section>

@@ -84,6 +84,10 @@ function getAnswers(qID){
 }
 
 function paintScreen(index){
+    var points = (questions[index].points>1) ? "Points":"Point" 
+    var questionHeader = document.getElementById("questionHeader");
+    questionHeader.innerHTML = "<center><b>Question (" + questions[index].points + " "+ points + "):</b></center>"; 
+
     var questionElement = document.getElementById("question_id");
     questionElement.innerHTML = "<center><br>" + questions[index].question + "</center>";
 
@@ -113,48 +117,85 @@ function paintScreen(index){
 
 }); 
 
+const modal = document.getElementById("quizModal");
+const modalIcon = document.getElementById("modal-icon");
+const modalTitle = document.getElementById("modal-title");
+const modalScore = document.getElementById("modal-score");
+const quizEndModalTitle = document.getElementById("quiz-end-modal-title");
+
 function checkAnswers(){
    
    const selectedValue = document.querySelector('input[name="answerOption"]:checked')?.value;
    console.log("correct: ",(answers[selectedValue].correct_ans===1) );
    totalPoints = totalPoints + questions[index].points;
     if (answers[selectedValue].correct_ans===1) {
-// if answer is correct 
+
+        // if answer is correct 
     score = score + questions[index].points;
-    alert("Correct!  Your score is: " + score + " out of " + totalPoints);
+    
+    showModal(true, `Correct! Your score is: ${score} out of ${totalPoints}`);
 // do this code - js popup correct and increase score and show it on popup - 2 lines of code
 
 // increase the points by: questions[index].points
     } else {
-        score;
-alert("Sorry, incorrect. Your score is: " + score + " out of " + totalPoints);
+        showModal(false, `Sorry, incorrect. Your score is: ${score} out of ${totalPoints}`);
 //alert("Your score is: ", score);
 // do this code - 1 line
 
     }
-    bringNextQuestion();
+    
 }
 
+function showModal(isCorrect, message) {
+     document.getElementById("submit").disabled = true;
+         modal.style.display = "flex"; 
+document.getElementById("choiceOne").disabled = true;
+document.getElementById("choiceTwo").disabled = true;
+document.getElementById("choiceThree").disabled = true;
+document.getElementById("choiceFour").disabled = true;
 
-// next button listener 
+    modalIcon.innerHTML = isCorrect ? "✓" : "✕";
+    modalIcon.className = isCorrect ? "correct" : "incorrect";
+    modalTitle.innerText = isCorrect ? "Well Done!" : "Incorrect";
+    modalScore.innerText = message;
+    // modal.classList.remove("modal-hidden");
+    //       modal.classList.add("modal-visible");
+    modal.className = "modal-visible"; // Show modal
+     
+}
 
-// const next_question = document.getElementById("next_question");
-//    next_question.addEventListener("click", function(event) {
+function closeModal() {
+        modal.style.display = "none"; 
+    modal.className = "modal-hidden";
+    bringNextQuestion();
+    document.getElementById("submit").disabled = false;
+    document.getElementById("choiceOne").disabled = false;
+    document.getElementById("choiceTwo").disabled = false;
+    document.getElementById("choiceThree").disabled = false;
+    document.getElementById("choiceFour").disabled = false;
 
-//     console.log("next button clicked");
+}
 
-//    event.preventDefault();
-
-//    bringNextQuestion();
-
-// }); 
+function quizFinishedModal (message) {
     
+    showModal()
+    quizEndModalTitle.innerText = "<b>Quiz Finished!</b>  Do you want to retake the quiz or do you want to go back to the site homepage?";
+    // modalScore.innerText = message;
+    // modal.className = "modal-visible"; 
+    modal.style.display = "flex"; 
+}
 
-function bringNextQuestion(question_id){
- index = index + 1;
- if (index > 4) {
-    alert ("Quiz Finished!")
- } else {
-    getAnswers(questions[index].question_id)
- }
+// Ensure this calls closeModal instead of alert
+function bringNextQuestion(){
+    modal.className = "modal-hidden";
+    index = index + 1;
+    if (index > 4) { quizFinishedModal()  // You can make this a modal too
+    } else {
+        getAnswers(questions[index].question_id);
+    }
+}
+
+// Added handler for the 'Next Question' button inside the modal
+function nextQuestionAction() {
+    closeModal();
 }
