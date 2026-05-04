@@ -118,10 +118,11 @@ function paintScreen(index){
 }); 
 
 const modal = document.getElementById("quizModal");
+const endofQuizWindow = document.getElementById("endOfQuizModal");
 const modalIcon = document.getElementById("modal-icon");
 const modalTitle = document.getElementById("modal-title");
 const modalScore = document.getElementById("modal-score");
-const quizEndModalTitle = document.getElementById("quiz-end-modal-title");
+const quizEndModalTitle = document.getElementById("quizEndModalTitle");
 
 function checkAnswers(){
    
@@ -176,20 +177,32 @@ function closeModal() {
 
 }
 
-function quizFinishedModal (message) {
+function quizFinishedModal () {
     
-    showModal()
-    quizEndModalTitle.innerText = "<b>Quiz Finished!</b>  Do you want to retake the quiz or do you want to go back to the site homepage?";
+    showQuizFinishedModal()
+   // quizEndModalTitle.innerText = "<b>Quiz Finished!</b>  Do you want to retake the quiz or do you want to go back to the site homepage?";
     // modalScore.innerText = message;
-    // modal.className = "modal-visible"; 
+     modal.className = "modal-visible"; 
     modal.style.display = "flex"; 
+}
+
+function endofQuizModal() { 
+    console.log("end of quiz")
+    document.getElementById("submit").disabled = true; // this is not disabling the button!!!!! @#$#^#%^%@
+         endofQuizWindow.style.display = "flex"; 
+document.getElementById("choiceOne").disabled = true; // this is not disabling the option buttons!!!!! ^&%^#$%*^I**
+document.getElementById("choiceTwo").disabled = true;
+document.getElementById("choiceThree").disabled = true;
+document.getElementById("choiceFour").disabled = true;
+ quizEndModalTitle.innerHTML = "Quiz Finished! <br>  Do you want to retake the quiz or do you want to go back to the site homepage?";
+// quizEndModalTitle.className = "modal-visible"; // Show modal
 }
 
 // Ensure this calls closeModal instead of alert
 function bringNextQuestion(){
     modal.className = "modal-hidden";
     index = index + 1;
-    if (index > 4) { quizFinishedModal()  // You can make this a modal too
+    if (index > 4) { endofQuizModal() 
     } else {
         getAnswers(questions[index].question_id);
     }
@@ -199,3 +212,13 @@ function bringNextQuestion(){
 function nextQuestionAction() {
     closeModal();
 }
+
+function quizRestartButton() {
+    window.location.href = "/quiz-questions-page";
+
+}
+
+
+function backToHomePageButton() {
+    window.location.href = "/";
+} 

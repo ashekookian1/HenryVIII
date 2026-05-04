@@ -39,17 +39,20 @@
     <div id="modal-icon"></div>
     <h2 id="modal-title"></h2>
     <p id="modal-score"></p>
-    <button onclick="nextQuestionAction()" class="next-btn">Next Question</button>
+     <div class="quiz-btn"></div>
+        <button onclick="nextQuestionAction()" class="next-btn">Next Question</button>
+     </div>
   </div>
 </div>
 
 <div id="endOfQuizModal" class="modal-overlay modal-hidden">
     <div class="modal-content">
     <span class="close-button" onclick="closeModal()">&times;</span>
-     <h2 id="quizEndModalTitle"></h2>
-    <p id="modal-score"></p>
-<button onclick="quizRestartButton()" class="quiz-restart-btn">Restart Quiz</button>
-<button onclick="backToHomePageButton()" class="back-to-homepage-btn">Back to Homepage</button>
+     <p id="quizEndModalTitle"></p>
+     <div class="quiz-btn">
+      <button onclick="quizRestartButton()" >Restart Quiz</button>
+      <button onclick="backToHomePageButton()" >Back to Homepage</button>
+      </div>
   </div>
 </div>
 

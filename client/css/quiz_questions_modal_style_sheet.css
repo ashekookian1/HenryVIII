@@ -31,7 +31,10 @@
 .modal-visible { display: flex; justify-content: center; align-items: center; }
 
 
-.correct { color: green; font-size: 50px; padding-bottom: 15px;}
-.incorrect { color: red; font-size: 50px; padding-bottom: 15px;}
+.correct { color: green; font-size: 50px; padding-bottom: 25px}
+.incorrect { color: red; font-size: 50px; padding-bottom: 25px;}
 .close-button { float: right; cursor: pointer; }
 
+.quiz-btn {
+    padding-top: 10px;
+}
