@@ -187,14 +187,13 @@ function quizFinishedModal () {
 }
 
 function endofQuizModal() { 
-    console.log("end of quiz")
-    document.getElementById("submit").disabled = true; // this is not disabling the button!!!!! @#$#^#%^%@
+    document.getElementById("submit").disabled = true; 
          endofQuizWindow.style.display = "flex"; 
-document.getElementById("choiceOne").disabled = true; // this is not disabling the option buttons!!!!! ^&%^#$%*^I**
+document.getElementById("choiceOne").disabled = true; 
 document.getElementById("choiceTwo").disabled = true;
 document.getElementById("choiceThree").disabled = true;
 document.getElementById("choiceFour").disabled = true;
- quizEndModalTitle.innerHTML = "Quiz Finished! <br>  Do you want to retake the quiz or do you want to go back to the site homepage?";
+ quizEndModalTitle.innerHTML = "<b> Quiz Finished! </b> <br> <br>  Do you want to retake the quiz or do you want to go back to the site homepage? <br> <br>";
 // quizEndModalTitle.className = "modal-visible"; // Show modal
 }
 

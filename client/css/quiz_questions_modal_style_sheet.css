@@ -16,9 +16,11 @@
     padding: 30px;
     border-radius: 15px;
     text-align: center; 
-    width: 90%;
+    width: 50%;
     min-width: 500px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+     justify-content: center; /* doesn't change correct/incorrect modal position*/
+     align-items: center; /* doesn't change correct/incorrect modal position*/
 }
 
 .modal-hidden {
@@ -28,7 +30,7 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 1000;
 }
-.modal-visible { display: flex; justify-content: center; align-items: center; }
+.modal-visible { display: flex; justify-content: center; align-items: center; } /* doesn't change correct/incorrect modal position to the center of the page*/
 
 
 .correct { color: green; font-size: 50px; padding-bottom: 25px}
