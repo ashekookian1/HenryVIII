@@ -160,8 +160,8 @@ document.getElementById("choiceFour").disabled = true;
     modalTitle.innerText = isCorrect ? "Well Done!" : "Incorrect";
     modalScore.innerText = message;
     // modal.classList.remove("modal-hidden");
-    //       modal.classList.add("modal-visible");
-    modal.className = "modal-visible"; // Show modal
+          modal.classList.add("modal-visible");
+   // modal.className = "modal-visible"; // Show modal
      
 }
 
